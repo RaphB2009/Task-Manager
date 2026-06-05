@@ -1,0 +1,269 @@
+*{
+    margin:0;
+    padding:0;
+    box-sizing:border-box;
+    font-family:'Segoe UI',sans-serif;
+}
+
+body{
+    background:#f8f7fc;
+}
+
+.hero{
+    min-height:100vh;
+    width:90%;
+    margin:auto;
+
+    display:flex;
+    justify-content:space-between;
+    align-items:center;
+    gap:4rem;
+}
+
+.hero-content{
+    flex:1;
+}
+
+.hero-content h1{
+    font-size:4rem;
+    line-height:1.1;
+    color:#222;
+}
+
+.hero-content span{
+    color:blueviolet;
+}
+
+.hero-content p{
+    margin:25px 0;
+    color:#666;
+    font-size:1.1rem;
+    max-width:500px;
+    line-height:1.7;
+}
+
+.hero-content button{
+    padding:18px 40px;
+    border:none;
+    border-radius:15px;
+    color:white;
+    font-size:1rem;
+    cursor:pointer;
+
+    background:linear-gradient(
+        135deg,
+        #8f6fff,
+        #6b0baa
+    );
+}
+.hero-content button:hover{
+    background:linear-gradient(
+        135deg,
+        #6b0baa,
+        #8f6fff
+    );
+    transform:translateY(-3px);
+}
+
+.hero-image{
+    flex:1;
+    display:flex;
+    justify-content:center;
+}
+
+.hero-image img{
+    width:100%;
+    max-width:600px;
+}
+
+a {
+  text-decoration: none;
+  color:linear-gradient(
+        135deg,
+        #8f6fff,
+        #6b0baa
+  );
+  margin-left: 20px;
+  font-size: 1rem;
+}
+
+ 
+.swiper{
+    width:100%;
+    max-width:550px;
+}
+
+.swiper-slide{
+    display:flex;
+    justify-content:center;
+    align-items:center;
+}
+
+.swiper-slide img{
+    width:100%;
+    max-width:500px;
+    object-fit:contain;
+    
+    transition:.4s;
+}
+.swiper-slide img:hover{
+    transform:translateY(-10px);
+}
+
+.swiper-pagination-bullet-active{
+    background: blueviolet !important;
+}
+
+.chacha {
+  padding-top: 55px;
+}
+.chatgpt {
+    padding-top: 55px;
+}
+.chamcham {
+    padding-top: 55px;
+}
+
+/* Responsive Code */
+@media (max-width: 1024px) {
+    .hero {
+        gap: 3rem;
+        width: 85%;
+    }
+    
+    .hero-content h1 {
+        font-size: 3rem;
+    }
+}
+
+@media (max-width: 768px) {
+    .hero {
+        flex-direction: column;
+        text-align: center;
+        padding: 3rem 0;
+        gap: 2rem;
+        width: 90%;
+    }
+    
+    .hero-content {
+        text-align: center;
+    }
+    
+    .hero-content h1 {
+        font-size: 2.5rem;
+    }
+    
+    .hero-content p {
+        margin: 20px auto;
+        max-width: 90%;
+    }
+    
+    .hero-content button {
+        margin-bottom: 25px;
+    }
+    
+    .hero-image {
+        width: 100%;
+    }
+    
+    .swiper {
+        max-width: 100%;
+    }
+    
+    .swiper-slide img {
+        max-width: 80%;
+        margin: 0 auto;
+    }
+    
+    .chacha, .chatgpt, .chamcham {
+        padding-top: 30px;
+    }
+}
+
+@media (max-width: 480px) {
+    .hero {
+        width: 92%;
+        padding: 2rem 0;
+        gap: 1.5rem;
+    }
+    
+    .hero-content h1 {
+        font-size: 1.8rem;
+    }
+    
+    .hero-content p {
+        font-size: 0.9rem;
+        margin: 15px auto;
+    }
+    
+    .hero-content button {
+        padding: 12px 28px;
+        font-size: 0.85rem;
+        margin-bottom: 20px;
+    }
+    
+    .advisory span {
+        font-size: 0.75rem;
+    }
+    
+    .swiper-slide img {
+        max-width: 90%;
+    }
+    
+    .chacha, .chatgpt, .chamcham {
+        padding-top: 15px;
+    }
+}
+
+@media (max-width: 375px) {
+    .hero-content h1 {
+        font-size: 1.5rem;
+    }
+    
+    .hero-content p {
+        font-size: 0.85rem;
+    }
+    
+    .hero-content button {
+        padding: 10px 24px;
+        font-size: 0.8rem;
+    }
+}
+
+@media (min-width: 1400px) {
+    .hero {
+        width: 85%;
+    }
+    
+    .hero-content h1 {
+        font-size: 4.5rem;
+    }
+}
+
+@media (max-width: 768px) and (orientation: landscape) {
+    .hero {
+        min-height: auto;
+        padding: 2rem 0;
+    }
+    
+    .hero-content h1 {
+        font-size: 2rem;
+    }
+    
+    .swiper-slide img {
+        max-width: 60%;
+    }
+}
+
+@media (hover: none) {
+    .hero-content button:hover {
+        transform: none;
+    }
+    
+    .swiper-slide img:hover {
+        transform: none;
+    }
+}
+
+  
+
