@@ -1,0 +1,85 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Document</title>
+  <link rel="stylesheet" href="crud copy.css">
+  <link
+  rel="stylesheet"
+  href="https://cdn.jsdelivr.net/npm/swiper@11/swiper-bundle.min.css"
+/>
+</head>
+<body>
+  <section class="hero">
+
+    <div class="hero-content">
+        <h1>
+            Organize tasks.<br>
+            Boost <span>productivity.</span>
+        </h1>
+
+        <p>
+            Smart Task Manager helps you stay focused and get more done every day.
+        </p>
+
+        <button>Get Started</button>
+        <a href="#">Have an account?</a>
+    </div>
+
+    <div class="hero-image">
+
+        <!-- SWIPER STARTS HERE -->
+        <div class="swiper mySwiper">
+
+            <div class="swiper-wrapper">
+
+                <div class="swiper-slide">
+                    <img src="lady.png" alt="">
+                </div>
+
+                <div class="swiper-slide">
+                    <img class="chacha" src="weeeee.png" alt="">
+                </div>
+
+                <div class="swiper-slide">
+                    <img class="chatgpt"src="ChatGPT_Image_Jun_5__2026_at_05_07_26_PM-removebg-preview.png" alt="">
+                </div>
+
+                <div class="swiper-slide">
+                    <img class="chamcham" src="we thank God.png" alt="">
+                </div>
+
+            </div>
+
+            <div class="swiper-pagination"></div>
+
+        </div>
+        <!-- SWIPER ENDS HERE -->
+
+    </div>
+
+</section>
+<!-- Swiper JS -->
+<script src="https://cdn.jsdelivr.net/npm/swiper@11/swiper-bundle.min.js"></script>
+
+<script>
+    var swiper = new Swiper(".mySwiper", {
+        loop: true,
+
+        autoplay: {
+            delay: 3000,
+            disableOnInteraction: false,
+        },
+
+        pagination: {
+            el: ".swiper-pagination",
+            clickable: true,
+        },
+    });
+</script>
+
+</body>
+
+</body>
+</html>
