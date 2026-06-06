@@ -10,26 +10,29 @@
 </head>
 
 <body>
-    <div class="header-title">
-        <a href="#">
-            <i class="bx bx-menu"></i>
-        </a>
-
-        <h2>My Tasks</h2>
-
-        <div class="icons">
+    <nav class="header-navbar">
+        <div class="header-title">
             <a href="#">
-                <i class="bx bx-search"></i>
+                <i class="bx bx-menu"></i>
             </a>
 
-            <a href="#">
-                <i class="bx bx-user-circle"></i>
-            </a>
+            <h2>My Tasks</h2>
+
+            <div class="icons">
+                <a href="#">
+                    <i class="bx bx-search"></i>
+                </a>
+
+                <a href="#">
+                    <i class="bx bx-user-circle"></i>
+                </a>
+            </div>
         </div>
-    </div>
+    </nav>
+
 
     <div class="navbar">
-        <a href="#">All</a>
+        <a href="#" class="active">All</a>
         <a href="#">Pending</a>
         <a href="#">In Progress</a>
         <a href="#">Completed</a>
@@ -44,6 +47,117 @@
         </a>
 
     </div>
+
+    <section class="task-model" id="task-model">
+        <h2>Create New Task</h2>
+        <div class="form-group">
+            <label for="task-title">Task Title</label>
+            <input type="text" id="task-title" placeholder="Enter task title">
+        </div>
+        <div class="form-group">
+            <label for="task-desc">Task Description</label>
+            <textarea id="task-desc" placeholder="Enter task description"></textarea>
+        </div>
+        <div class="form-group">
+            <label for="task-cate">Category</label>
+            <button class="cate-btn">work</button>
+            <button class="cate-btn">Personal</button>
+            <button class="cate-btn">Finance</button>
+            <button class="cate-btn">Health</button>
+            <button class="cate-btn">Education</button>
+            <button class="cate-btn">Other</button>
+        </div>
+        <div class="form-group">
+            <label for="task-priority">Priority</label>
+            <button class="priority-btn">Low</button>
+            <button class="priority-btn">Medium</button>
+            <button class="priority-btn">High</button>
+        </div>
+        <div class="due">
+            <div class="form-group">
+                <label for="task-duedate">Due Date</label>
+                <input type="date" id="task-duedate">
+            </div>
+        </div>
+
+        <div class="form-group">
+            <label for="task-duetime">Due Time</label>
+            <input type="time" id="task-duetime">
+        </div>
+
+        <div class="form-group">
+            <button class="save-btn">Save Task</button>
+        </div>
+
+    </section>
+
+    <section class="task-grid" id="task-grid">
+        <div class="task-card">
+            <div class="card-header">
+                <h3>Task Title</h3>
+                <div class="card-icons">
+                    <span class="icon-edit"><i class="bx bx-edit"></i></span>
+                    <span class="icon-trash"><i class="bx bx-trash"></i></span>
+                    <span class="icon-complete"><i class="bx bx-check"></i></span>
+                </div>
+            </div>
+            <div class="card-body">
+                <p>Task description goes here. This is a sample task to demonstrate the card layout.</p>
+            </div>
+            <div class="card-footer">
+                <span class="task-cate">Work</span>
+                <span class="priority-high">High</span>
+            </div>
+            <div class="card-deadline">
+                <span class="task-due">Due: 2026-06-30</span>
+                <span class="task-time">Time: 14:00</span>
+            </div>
+        </div>
+
+
+        <div class="task-card">
+            <div class="card-header">
+                <h3>Task Title</h3>
+                <div class="card-icons">
+                    <span class="icon-edit"><i class="bx bx-edit"></i></span>
+                    <span class="icon-trash"><i class="bx bx-trash"></i></span>
+                    <span class="icon-complete"><i class="bx bx-check"></i></span>
+                </div>
+            </div>
+            <div class="card-body">
+                <p>Task description goes here. This is a sample task to demonstrate the card layout.</p>
+            </div>
+            <div class="card-footer">
+                <span class="task-cate">Work</span>
+                <span class="priority-medium">Medium</span>
+            </div>
+            <div class="card-deadline">
+                <span class="task-due">Due: 2026-06-30</span>
+                <span class="task-time">Time: 14:00</span>
+            </div>
+        </div>
+
+        <div class="task-card">
+            <div class="card-header">
+                <h3>Task Title</h3>
+                <div class="card-icons">
+                    <span class="icon-trash"><i class="bx bx-trash"></i></span>
+                    <span class="icon-complete"><i class="bx bx-check"></i></span>
+                </div>
+            </div>
+            <div class="card-body">
+                <p>Task description goes here. This is a sample task to demonstrate the card layout.</p>
+            </div>
+            <div class="card-footer">
+                <span class="task-cate">Work</span>
+                <span class="priority-low">Low</span>
+            </div>
+            <div class="card-deadline">
+                <span class="task-due">Due: 2026-06-30</span>
+                <span class="task-time">Time: 14:00</span>
+            </div>
+        </div>
+    </section>
 
 
 </body>
