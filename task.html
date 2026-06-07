@@ -30,25 +30,35 @@
         </div>
     </nav>
 
+         <div class="dashboard">
+        <div class="box">
+            <p>Total: <span id="total-count">0</span></p>
+        </div>
 
-    <div class="navbar">
-        <a href="#" class="active">All</a>
-        <a href="#">Pending</a>
-        <a href="#">In Progress</a>
-        <a href="#">Completed</a>
+        <div class="box">
+            <p>Pending: <span id="pending-count">0</span></p>
+        </div>
+
+        <div class="box">
+            <p>Completed: <span id="completed-count">0</span></p>
+        </div>
     </div>
 
-    <div class="container">
+   
+
+    <div class="container" id="empty-state">
         <img src="asset/no task.png" alt="No task yet">
         <h2>No task yet</h2>
         <p>Stay organized and productive by creating your first task.</p>
-        <a href="#">
-            <i class="bx bx-plus" id="add-btn"> </i>
-        </a>
+        <button id="open-form" class="add-btn">+</button>
 
     </div>
 
     <section class="task-model" id="task-model">
+        <button id="back-btn" class="back-btn">
+            <i class="bx bx-arrow-back"></i>
+            Back
+        </button>
         <h2>Create New Task</h2>
         <div class="form-group">
             <label for="task-title">Task Title</label>
@@ -60,18 +70,18 @@
         </div>
         <div class="form-group">
             <label for="task-cate">Category</label>
-            <button class="cate-btn">work</button>
-            <button class="cate-btn">Personal</button>
-            <button class="cate-btn">Finance</button>
-            <button class="cate-btn">Health</button>
-            <button class="cate-btn">Education</button>
-            <button class="cate-btn">Other</button>
+            <button type="button" class="cate-btn">work</button>
+            <button type="button" class="cate-btn">Personal</button>
+            <button type="button" class="cate-btn">Finance</button>
+            <button type="button" class="cate-btn">Health</button>
+            <button type="button" class="cate-btn">Education</button>
+            <button type="button" class="cate-btn">Other</button>
         </div>
         <div class="form-group">
             <label for="task-priority">Priority</label>
-            <button class="priority-btn">Low</button>
-            <button class="priority-btn">Medium</button>
-            <button class="priority-btn">High</button>
+            <button type="button" class="priority-btn">Low</button>
+            <button type="button" class="priority-btn">Medium</button>
+            <button type="button" class="priority-btn">High</button>
         </div>
         <div class="due">
             <div class="form-group">
@@ -92,74 +102,13 @@
     </section>
 
     <section class="task-grid" id="task-grid">
-        <div class="task-card">
-            <div class="card-header">
-                <h3>Task Title</h3>
-                <div class="card-icons">
-                    <span class="icon-edit"><i class="bx bx-edit"></i></span>
-                    <span class="icon-trash"><i class="bx bx-trash"></i></span>
-                    <span class="icon-complete"><i class="bx bx-check"></i></span>
-                </div>
-            </div>
-            <div class="card-body">
-                <p>Task description goes here. This is a sample task to demonstrate the card layout.</p>
-            </div>
-            <div class="card-footer">
-                <span class="task-cate">Work</span>
-                <span class="priority-high">High</span>
-            </div>
-            <div class="card-deadline">
-                <span class="task-due">Due: 2026-06-30</span>
-                <span class="task-time">Time: 14:00</span>
-            </div>
-        </div>
 
-
-        <div class="task-card">
-            <div class="card-header">
-                <h3>Task Title</h3>
-                <div class="card-icons">
-                    <span class="icon-edit"><i class="bx bx-edit"></i></span>
-                    <span class="icon-trash"><i class="bx bx-trash"></i></span>
-                    <span class="icon-complete"><i class="bx bx-check"></i></span>
-                </div>
-            </div>
-            <div class="card-body">
-                <p>Task description goes here. This is a sample task to demonstrate the card layout.</p>
-            </div>
-            <div class="card-footer">
-                <span class="task-cate">Work</span>
-                <span class="priority-medium">Medium</span>
-            </div>
-            <div class="card-deadline">
-                <span class="task-due">Due: 2026-06-30</span>
-                <span class="task-time">Time: 14:00</span>
-            </div>
-        </div>
-
-        <div class="task-card">
-            <div class="card-header">
-                <h3>Task Title</h3>
-                <div class="card-icons">
-                    <span class="icon-trash"><i class="bx bx-trash"></i></span>
-                    <span class="icon-complete"><i class="bx bx-check"></i></span>
-                </div>
-            </div>
-            <div class="card-body">
-                <p>Task description goes here. This is a sample task to demonstrate the card layout.</p>
-            </div>
-            <div class="card-footer">
-                <span class="task-cate">Work</span>
-                <span class="priority-low">Low</span>
-            </div>
-            <div class="card-deadline">
-                <span class="task-due">Due: 2026-06-30</span>
-                <span class="task-time">Time: 14:00</span>
-            </div>
-        </div>
     </section>
 
+    <button id="add-task-btn" class="add-btn">+</button>
 
+
+    <script src="task.js"></script>
 </body>
 
 </html>
