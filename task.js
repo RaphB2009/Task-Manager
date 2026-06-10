@@ -1,194 +1,135 @@
-
 const openFormBtn = document.getElementById("open-form");
-const backBtn = document.getElementById("back-btn");
-const saveBtn = document.querySelector(".save-btn");
-const addTaskBtn = document.getElementById("add-task-btn");
-
+const mainContent = document.getElementById("main-content");
+const formContainer = document.getElementById("form-container");
 const emptyState = document.getElementById("empty-state");
-const taskForm = document.getElementById("task-model");
 const taskGrid = document.getElementById("task-grid");
 
-// dashboard
+// Dashboard elements
 const totalCount = document.getElementById("total-count");
 const pendingCount = document.getElementById("pending-count");
 const completedCount = document.getElementById("completed-count");
 
-
-// start hidden
-taskForm.style.display = "none";
-taskGrid.style.display = "none";
-addTaskBtn.style.display = "none";
-
-
-// =====================
-// OPEN FORM
-// =====================
-openFormBtn.onclick = function () {
-    emptyState.style.display = "none";
-    taskForm.style.display = "flex";
-};
-
-
-// =====================
-// BACK BUTTON
-// =====================
-backBtn.onclick = function () {
-    taskForm.style.display = "none";
-    emptyState.style.display = "flex";
-};
-
-
-// =====================
-// CATEGORY SELECT
-// =====================
-const categories = document.querySelectorAll(".cate-btn");
-
-categories.forEach(function (btn) {
-    btn.onclick = function () {
-
-        categories.forEach(function (b) {
-            b.classList.remove("active");
-        });
-
-        btn.classList.add("active");
-    };
-});
-
-
-// =====================
-// PRIORITY SELECT
-// =====================
-const priorities = document.querySelectorAll(".priority-btn");
-
-priorities.forEach(function (btn) {
-    btn.onclick = function () {
-
-        priorities.forEach(function (b) {
-            b.classList.remove("active");
-        });
-
-        btn.classList.add("active");
-    };
-});
-
-
-// =====================
-// DASHBOARD UPDATE
-// =====================
-function updateDashboard() {
-
-    const cards = document.querySelectorAll(".task-card");
-
-    let total = cards.length;
-    let completed = 0;
-
-    cards.forEach(function (card) {
-        if (card.classList.contains("completed")) {
-            completed = completed + 1;
-        }
+// Load external form
+fetch("create-task-form.html")
+    .then(res => res.text())
+    .then(html => {
+        formContainer.innerHTML = html;
+        initializeFormEvents(); // Initialize events after form loads
     });
 
-    totalCount.innerText = total;
-    completedCount.innerText = completed;
-    pendingCount.innerText = total - completed;
-}
+function initializeFormEvents() {
+    const backBtn = document.getElementById("back-btn");
+    const saveBtn = document.getElementById("save-btn");
+    const taskForm = document.getElementById("task-model");
 
+    // --- Open Form → Hide everything ---
+    openFormBtn.onclick = () => {
+        mainContent.style.display = "none";
+        taskForm.style.display = "flex";
+    };
 
-// =====================
-// SAVE TASK
-// =====================
-saveBtn.onclick = function () {
-
-    let title = document.getElementById("task-title").value;
-    let desc = document.getElementById("task-desc").value;
-    let date = document.getElementById("task-duedate").value;
-    let time = document.getElementById("task-duetime").value;
-
-    let category = document.querySelector(".cate-btn.active");
-    let priority = document.querySelector(".priority-btn.active");
-
-    if (!category) category = "Other";
-    else category = category.textContent;
-
-    if (!priority) priority = "Low";
-    else priority = priority.textContent;
-
-    // check empty fields
-    if (title === "" || desc === "" || date === "" || time === "") {
-        alert("Please fill all fields");
-        return;
-    }
-
-    // CREATE TASK CARD
-    let card = document.createElement("div");
-    card.classList.add("task-card");
-
-    card.innerHTML = `
-        <div class="card-header">
-            <h3>${title}</h3>
-
-            <div class="card-icons">
-                <span class="complete-btn">✔</span>
-                <span class="delete-btn">🗑</span>
-            </div>
-        </div>
-
-        <div class="card-body">
-            <p>${desc}</p>
-        </div>
-
-        <div class="card-footer">
-            <span>${category}</span>
-            <span>${priority}</span>
-        </div>
-
-        <div class="card-deadline">
-            <span>${date}</span>
-            <span>${time}</span>
-        </div>
-    `;
-
-    // show task list
-    taskGrid.appendChild(card);
-    taskGrid.style.display = "grid";
-    emptyState.style.display = "none";
-    addTaskBtn.style.display = "flex";
-
-    // CLEAR FORM
-    document.getElementById("task-title").value = "";
-    document.getElementById("task-desc").value = "";
-    document.getElementById("task-duedate").value = "";
-    document.getElementById("task-duetime").value = "";
-
-    // =====================
-    // COMPLETE TASK
-    // =====================
-    let completeBtn = card.querySelector(".complete-btn");
-
-    completeBtn.onclick = function () {
-        card.classList.toggle("completed");
+    // --- Close Form → Show everything ---
+    backBtn.onclick = () => {
+        taskForm.style.display = "none";
+        mainContent.style.display = "block";
         updateDashboard();
     };
 
+    // --- Category Selection ---
+    document.querySelectorAll(".cate-btn").forEach(btn => {
+        btn.onclick = () => {
+            document.querySelectorAll(".cate-btn").forEach(b => b.classList.remove("active"));
+            btn.classList.add("active");
+        };
+    });
 
-    // =====================
-    // DELETE TASK
-    // =====================
-    let deleteBtn = card.querySelector(".delete-btn");
+    // --- Priority Selection ---
+    document.querySelectorAll(".priority-btn").forEach(btn => {
+        btn.onclick = () => {
+            document.querySelectorAll(".priority-btn").forEach(b => b.classList.remove("active"));
+            btn.classList.add("active");
+        };
+    });
 
-    deleteBtn.onclick = function () {
-        card.remove();
+    // --- Save New Task ---
+    saveBtn.onclick = () => {
+        const title = document.getElementById("task-title").value.trim();
+        const desc = document.getElementById("task-desc").value.trim();
+        const date = document.getElementById("task-duedate").value;
+        const time = document.getElementById("task-duetime").value;
 
-        if (taskGrid.children.length === 0) {
-            taskGrid.style.display = "none";
-            emptyState.style.display = "flex";
-            addTaskBtn.style.display = "none";
+        const category = document.querySelector(".cate-btn.active").textContent;
+        const priority = document.querySelector(".priority-btn.active").textContent;
+
+        // Validate
+        if (!title || !desc || !date || !time) {
+            alert("Please fill all fields!");
+            return;
         }
 
+        // Create Task Card
+        const card = document.createElement("div");
+        card.className = "task-card";
+        card.innerHTML = `
+            <div class="card-header">
+                <h3>${title}</h3>
+                <div class="card-icons">
+                    <span class="complete-btn">✔</span>
+                    <span class="delete-btn">🗑</span>
+                </div>
+            </div>
+            <div class="card-body"><p>${desc}</p></div>
+            <div class="card-footer">
+                <span class="task-cate">${category}</span>
+                <span class="priority-${priority.toLowerCase()}">${priority}</span>
+            </div>
+            <div class="card-deadline">
+                <span>📅 ${date}</span>
+                <span>⏰ ${time}</span>
+            </div>
+        `;
+
+        // Complete Task
+        card.querySelector(".complete-btn").onclick = () => {
+            card.classList.toggle("completed");
+            updateDashboard();
+        };
+
+        // Delete Task
+        card.querySelector(".delete-btn").onclick = () => {
+            card.remove();
+            updateDashboard();
+        };
+
+        // Add to DOM
+        taskGrid.appendChild(card);
+        taskGrid.style.display = "grid";
+
+        // Clear Form
+        document.getElementById("task-title").value = "";
+        document.getElementById("task-desc").value = "";
+        document.getElementById("task-duedate").value = "";
+        document.getElementById("task-duetime").value = "";
+
+        // Close Form
+        taskForm.style.display = "none";
+        mainContent.style.display = "block";
+
+        // Update Stats
         updateDashboard();
     };
+}
 
-    updateDashboard();
+// --- Update Dashboard Counts ---
+function updateDashboard() {
+    const cards = document.querySelectorAll(".task-card");
+    const total = cards.length;
+    const completed = document.querySelectorAll(".task-card.completed").length;
+    const pending = total - completed;
 
-    taskForm.style.display = "none";
-};
+    totalCount.textContent = total;
+    completedCount.textContent = completed;
+    pendingCount.textContent = pending;
+
+    emptyState.style.display = total === 0 ? "flex" : "none";
+}

@@ -1,114 +1,58 @@
 <!DOCTYPE html>
 <html lang="en">
-
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Document</title>
+    <title>My Tasks</title>
     <link rel="stylesheet" href="task.css">
     <link href='https://unpkg.com/boxicons@2.1.4/css/boxicons.min.css' rel='stylesheet'>
 </head>
-
 <body>
     <nav class="header-navbar">
         <div class="header-title">
             <a href="#">
                 <i class="bx bx-menu"></i>
             </a>
-
             <h2>My Tasks</h2>
-
             <div class="icons">
                 <a href="#">
                     <i class="bx bx-search"></i>
-                </a>
-
-                <a href="#">
-                    <i class="bx bx-user-circle"></i>
                 </a>
             </div>
         </div>
     </nav>
 
-         <div class="dashboard">
-        <div class="box">
-            <p>Total: <span id="total-count">0</span></p>
-        </div>
-
-        <div class="box">
-            <p>Pending: <span id="pending-count">0</span></p>
-        </div>
-
-        <div class="box">
-            <p>Completed: <span id="completed-count">0</span></p>
-        </div>
-    </div>
-
-   
-
-    <div class="container" id="empty-state">
-        <img src="asset/no task.png" alt="No task yet">
-        <h2>No task yet</h2>
-        <p>Stay organized and productive by creating your first task.</p>
-        <button id="open-form" class="add-btn">+</button>
-
-    </div>
-
-    <section class="task-model" id="task-model">
-        <button id="back-btn" class="back-btn">
-            <i class="bx bx-arrow-back"></i>
-            Back
-        </button>
-        <h2>Create New Task</h2>
-        <div class="form-group">
-            <label for="task-title">Task Title</label>
-            <input type="text" id="task-title" placeholder="Enter task title">
-        </div>
-        <div class="form-group">
-            <label for="task-desc">Task Description</label>
-            <textarea id="task-desc" placeholder="Enter task description"></textarea>
-        </div>
-        <div class="form-group">
-            <label for="task-cate">Category</label>
-            <button type="button" class="cate-btn">work</button>
-            <button type="button" class="cate-btn">Personal</button>
-            <button type="button" class="cate-btn">Finance</button>
-            <button type="button" class="cate-btn">Health</button>
-            <button type="button" class="cate-btn">Education</button>
-            <button type="button" class="cate-btn">Other</button>
-        </div>
-        <div class="form-group">
-            <label for="task-priority">Priority</label>
-            <button type="button" class="priority-btn">Low</button>
-            <button type="button" class="priority-btn">Medium</button>
-            <button type="button" class="priority-btn">High</button>
-        </div>
-        <div class="due">
-            <div class="form-group">
-                <label for="task-duedate">Due Date</label>
-                <input type="date" id="task-duedate">
+    <!-- ALL CONTENT TO HIDE WHEN FORM OPENS -->
+    <div id="main-content">
+        <div class="dashboard">
+            <div class="box">
+                <p>Total: <span id="total-count">0</span></p>
+            </div>
+            <div class="box">
+                <p>Pending: <span id="pending-count">0</span></p>
+            </div>
+            <div class="box">
+                <p>Completed: <span id="completed-count">0</span></p>
             </div>
         </div>
 
-        <div class="form-group">
-            <label for="task-duetime">Due Time</label>
-            <input type="time" id="task-duetime">
+        <div class="container" id="empty-state">
+            <img src="asset/no task.png" alt="No task yet">
+            <h2>No task yet</h2>
+            <p>Stay organized and productive by creating your first task.</p>
         </div>
 
-        <div class="form-group">
-            <button class="save-btn">Save Task</button>
+        <div class="task-grid" id="task-grid">
+            
         </div>
+    </div>
 
-    </section>
+    <!-- ADD BUTTON - ALWAYS VISIBLE -->
+    <button id="open-form" class="add-btn">+</button>
 
-    <section class="task-grid" id="task-grid">
-
-    </section>
-
-    <button id="add-task-btn" class="add-btn">+</button>
-
+    <!-- Load External Form -->
+    <div id="form-container"></div>
 
     <script src="task.js"></script>
 </body>
-
 </html>

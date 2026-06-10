@@ -1,0 +1,61 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <!-- Create Task Form - Separate File -->
+<section class="task-model" id="task-model">
+    <button id="back-btn" class="back-btn">← Back</button>
+    <h2>Create New Task</h2>
+    
+    <div class="form-group">
+        <label for="task-title">Task Title</label>
+        <input type="text" id="task-title" placeholder="Enter task title">
+    </div>
+
+    <div class="form-group">
+        <label for="task-desc">Task Description</label>
+        <textarea id="task-desc" placeholder="Enter task description"></textarea>
+    </div>
+
+    <div class="form-group">
+        <label>Category</label>
+        <div class="cate-group">
+            <button type="button" class="cate-btn active">Work</button>
+            <button type="button" class="cate-btn">Personal</button>
+            <button type="button" class="cate-btn">Finance</button>
+            <button type="button" class="cate-btn">Health</button>
+            <button type="button" class="cate-btn">Education</button>
+            <button type="button" class="cate-btn">Other</button>
+        </div>
+    </div>
+
+    <div class="form-group">
+        <label>Priority</label>
+        <div class="priority-group">
+            <button type="button" class="priority-btn">Low</button>
+            <button type="button" class="priority-btn active">Medium</button>
+            <button type="button" class="priority-btn">High</button>
+        </div>
+    </div>
+
+    <div class="due">
+        <div class="form-group">
+            <label for="task-duedate">Due Date</label>
+            <input type="date" id="task-duedate">
+        </div>
+        <div class="form-group">
+            <label for="task-duetime">Due Time</label>
+            <input type="time" id="task-duetime">
+        </div>
+    </div>
+
+    <div class="form-group">
+        <button class="save-btn" id="save-btn">Save Task</button>
+    </div>
+</section>
+</body>
+</html>
