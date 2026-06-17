@@ -8,17 +8,16 @@ const totalCount = document.getElementById("total-count");
 const pendingCount = document.getElementById("pending-count");
 const completedCount = document.getElementById("completed-count");
 
-/* LOAD FORM */
+/* LOAD FORM — only on task.html where form-container exists */
 
-fetch("create-task-form.html")
-.then(res => res.text())
-.then(html => {
-
-    formContainer.innerHTML = html;
-
-    initializeFormEvents();
-
-});
+if(formContainer){
+    fetch("create-task-form.html")
+    .then(res => res.text())
+    .then(html => {
+        formContainer.innerHTML = html;
+        initializeFormEvents();
+    });
+}
 
 /* FORM EVENTS */
 
@@ -161,11 +160,10 @@ function renderTasks(){
 
     tasks.forEach((task,index)=>{
 
-        const card =
-        document.createElement("div");
+        const card = document.createElement("div");
 
-        card.className =
-        `task-card ${task.completed ? "completed" : ""}`;
+        card.className = `task-card ${task.completed ? "completed" : ""}`;
+        card.style.cursor = "pointer";
 
         card.innerHTML = `
 
@@ -177,14 +175,14 @@ function renderTasks(){
 
                     <span
                         class="complete-btn"
-                        onclick="toggleTask(${index})"
+                        title="${task.completed ? 'Mark pending' : 'Mark complete'}"
                     >
                         ✔
                     </span>
 
                     <span
                         class="delete-btn"
-                        onclick="deleteTask(${index})"
+                        title="Delete task"
                     >
                         🗑
                     </span>
@@ -217,12 +215,33 @@ function renderTasks(){
 
             </div>`;
 
+        // wire buttons first — stopPropagation prevents card click from firing
+        card.querySelector(".complete-btn").addEventListener("click", (e) => {
+            e.stopPropagation();
+            toggleTask(index);
+        });
+
+        card.querySelector(".delete-btn").addEventListener("click", (e) => {
+            e.stopPropagation();
+            deleteTask(index);
+        });
+
+        // clicking anywhere else on the card opens task details
+        card.addEventListener("click", () => openTask(index));
+
         taskGrid.appendChild(card);
 
     });
 
     updateDashboard();
 
+}
+
+/* OPEN TASK DETAILS */
+
+function openTask(index){
+    localStorage.setItem("selectedTask", index);
+    window.location.href = "task-details.html";
 }
 
 /* COMPLETE */
@@ -283,10 +302,23 @@ function updateDashboard(){
     const pending =
     total - completed;
 
-    totalCount.textContent = total;
-    completedCount.textContent = completed;
-    pendingCount.textContent = pending;}
+    // task.html counters
+    if(totalCount)    totalCount.textContent    = total;
+    if(completedCount) completedCount.textContent = completed;
+    if(pendingCount)  pendingCount.textContent   = pending;
+
+    // dashboard.html counters
+    const elTotal      = document.getElementById("totalTasks");
+    const elCompleted  = document.getElementById("completedTasks");
+    const elPending    = document.getElementById("pendingTasks");
+    const elRate       = document.getElementById("completionRate");
+
+    if(elTotal)     elTotal.textContent    = total;
+    if(elCompleted) elCompleted.textContent = completed;
+    if(elPending)   elPending.textContent   = pending;
+    if(elRate)      elRate.textContent      = (total > 0 ? Math.round((completed/total)*100) : 0) + "%";
+}
 
 /* INITIAL LOAD */
 
-renderTasks();
+if(taskGrid) renderTasks();

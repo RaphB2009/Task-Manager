@@ -183,139 +183,28 @@
 
 <script>
 
-const user =
-JSON.parse(
-localStorage.getItem("taskflowUser")
-);
+const user = JSON.parse(localStorage.getItem("taskflowUser"));
 
-if(user){
-
-    document.getElementById("welcomeMessage")
-    .textContent =
-    `Good Morning, ${user.name} 👋`;
-
+function getGreeting() {
+    const hour = new Date().getHours();
+    if (hour < 12) return "Good Morning";
+    if (hour < 17) return "Good Afternoon";
+    return "Good Evening";
 }
 
-const tasks =
-JSON.parse(
-localStorage.getItem("tasks")
-) || [];
-
-const taskGrid =
-document.getElementById("task-grid");
-
-const emptyState =
-document.getElementById("empty-state");
-
-/* ANALYTICS */
-
-const total = tasks.length;
-
-const completed =
-tasks.filter(task => task.completed).length;
-
-const pending =
-total - completed;
-
-const percentage =
-total > 0
-? Math.round((completed / total) * 100)
-: 0;
-
-document.getElementById("totalTasks").textContent =
-total;
-
-document.getElementById("completedTasks").textContent =
-completed;
-
-document.getElementById("pendingTasks").textContent =
-pending;
-
-document.getElementById("completionRate").textContent =
-percentage + "%";
-
-/* TASKS */
-
-if(tasks.length > 0){
-
-    emptyState.style.display = "none";
-
-    let html = "";
-
-    tasks.forEach((task,index)=>{
-
-        html += `
-
-        <div
-            class="task-card ${task.completed ? 'completed' : ''}"
-            onclick="openTask(${index})"
-        >
-
-            <div class="task-header">
-
-                <div class="task-check">
-
-                    <input
-                        type="checkbox"
-                        ${task.completed ? "checked" : ""}
-                        disabled
-                    >
-
-                    <h3 class="${task.completed ? 'completed-task' : ''}">
-                        ${task.title}
-                    </h3>
-
-                </div>
-
-            </div>
-
-            <p>${task.description}</p>
-
-            <p>
-                ${task.date}
-                ${task.time}
-            </p>
-
-            <span class="priority ${task.priority.toLowerCase()}">
-                ${task.priority}
-            </span>
-
-        </div>
-
-        `;
-
-    });
-
-    taskGrid.innerHTML = html;
-
-}else{
-
-    emptyState.style.display = "flex";
-
-}
-
-function openTask(index){
-
-    localStorage.setItem(
-        "selectedTask",
-        index
-    );
-
-    window.location.href =
-    "task-details.html";
-
+if (user) {
+    document.getElementById("welcomeMessage").textContent =
+        `${getGreeting()}, ${user.name} 👋`;
+} else {
+    document.getElementById("welcomeMessage").textContent =
+        `${getGreeting()} 👋`;
 }
 
 </script>
 
 <script src="https://unpkg.com/lucide@latest"></script>
-
-<script>
-    lucide.createIcons();
-</script>
-
+<script>lucide.createIcons();</script>
 <script src="task.js"></script>
-
 
 </body>
 </html>
