@@ -1,0 +1,76 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Sign Up</title>
+<link rel="stylesheet" href="signup.css">
+</head>
+<body>
+
+<div class="container">
+
+    <!-- IMAGE SIDE -->
+    <div class="image-side">
+        <img src="luv.png" alt="Illustration">
+    </div>
+
+    <!-- FORM SIDE -->
+    <div class="form-side">
+
+        <h1>Create <span>Account.</span></h1>
+
+        <p>
+            Join thousands of users organizing tasks
+            and boosting productivity.
+        </p>
+
+        <form>
+
+            <div class="input-group">
+                <input type="text" placeholder="Full Name" required>
+            </div>
+
+            <div class="input-group">
+                <input type="email" placeholder="Email Address" required>
+            </div>
+
+            <div class="input-group password-box">
+                <input
+                    type="password"
+                    id="password"
+                    placeholder="Password"
+                    required
+                >
+                <span id="togglePassword">👁</span>
+            </div>
+
+            <div class="input-group password-box">
+                <input
+                    type="password"
+                    id="confirmPassword"
+                    placeholder="Confirm Password"
+                    required
+                >
+                <span id="toggleConfirm">👁</span>
+            </div>
+
+            <a href="dashboard.html" class="signup-btn">
+                Create Account
+            </a>
+
+            <p class="signin-link">
+                Already have an account?
+                <a href="eni.html">Sign In</a>
+            </p>
+
+        </form>
+
+    </div>
+
+</div>
+
+<script src="eni.js"></script>
+
+</body>
+</html>
